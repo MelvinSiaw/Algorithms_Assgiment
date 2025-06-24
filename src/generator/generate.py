@@ -32,3 +32,5 @@ if __name__ == "__main__":
     print(f"Generating {row_count:,} rows into '{output_file}'…")
     generate(row_count, output_file)
     print(f"✔ Done: {row_count:,} rows written to '{output_file}'.")
+    
+    # python src\generator/generate.py 60000000 data/test_60M.csv 
