@@ -1,14 +1,7 @@
 import csv
 import os
+import sys
 from typing import List, Tuple
-
-
-# ===== Configuration =====
-csv_path = "data/dataset_60000000.csv"  # Input CSV file path
-start_row = 0                  # Start row index (inclusive)
-end_row = 6                    # End row index (inclusive)
-# ==========================
-
 
 def read_csv_subset(filepath: str, start: int, end: int) -> List[Tuple[int, str]]:
     """Read a subset of rows from the CSV file and return a list of (int, string) tuples."""
@@ -23,7 +16,6 @@ def read_csv_subset(filepath: str, start: int, end: int) -> List[Tuple[int, str]
                 text = row[1]
                 data.append((num, text))
     return data
-
 
 def merge_sort_trace(arr: List[Tuple[int, str]], trace: List[List[Tuple[int, str]]]) -> List[Tuple[int, str]]:
     """Merge sort that records the steps of each merge into the trace list."""
@@ -50,14 +42,19 @@ def merge_sort_trace(arr: List[Tuple[int, str]], trace: List[List[Tuple[int, str
     trace.append(result.copy())
     return result
 
-
 def format_row(row: List[Tuple[int, str]]) -> str:
     return "[" + ", ".join(f"{x}/{s}" for x, s in row) + "]"
 
-
 def main():
-    os.makedirs("output", exist_ok=True)
+    if len(sys.argv) != 4:
+        print("Usage: python merge_sort_step.py <csv_path> <start_row> <end_row>")
+        sys.exit(1)
 
+    csv_path = sys.argv[1]
+    start_row = int(sys.argv[2])
+    end_row = int(sys.argv[3])
+
+    os.makedirs("output", exist_ok=True)
     data = read_csv_subset(csv_path, start_row, end_row)
     trace = []
     merge_sort_trace(data, trace)
@@ -69,6 +66,8 @@ def main():
 
     print(f"✔ Merge sort completed! Output saved to: {out_filename}")
 
-
 if __name__ == "__main__":
     main()
+
+
+## python src/generator/sorting/merge_sort_step.py data/dataset_80000000.csv 0 6

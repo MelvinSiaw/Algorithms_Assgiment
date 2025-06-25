@@ -1,17 +1,10 @@
 import csv
 import time
 import os
+import sys
 from typing import List, Tuple
 
-
-# ===== Configuration =====
-csv_path = "data/dataset_60000000.csv"  # Input file (unsorted)
-output_name = "merge_sort_60000000.csv"
-# ==========================
-
-
 def read_csv(filepath: str) -> List[Tuple[int, str]]:
-    """Read CSV and return list of (int, string) tuples."""
     data = []
     with open(filepath, 'r', encoding='utf-8') as f:
         reader = csv.reader(f)
@@ -21,19 +14,14 @@ def read_csv(filepath: str) -> List[Tuple[int, str]]:
             data.append((num, text))
     return data
 
-
 def merge_sort(arr: List[Tuple[int, str]]) -> List[Tuple[int, str]]:
-    """Standard merge sort (by integer key)."""
     if len(arr) <= 1:
         return arr
-
     mid = len(arr) // 2
     left = merge_sort(arr[:mid])
     right = merge_sort(arr[mid:])
-
     result = []
     i = j = 0
-
     while i < len(left) and j < len(right):
         if left[i][0] < right[j][0]:
             result.append(left[i])
@@ -41,23 +29,25 @@ def merge_sort(arr: List[Tuple[int, str]]) -> List[Tuple[int, str]]:
         else:
             result.append(right[j])
             j += 1
-
     result.extend(left[i:])
     result.extend(right[j:])
     return result
 
-
 def write_csv(data: List[Tuple[int, str]], path: str) -> None:
-    """Write sorted data to CSV."""
     with open(path, 'w', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
         for row in data:
             writer.writerow(row)
 
-
 def main():
-    os.makedirs("output", exist_ok=True)
+    if len(sys.argv) != 3:
+        print("Usage: python merge_sort.py <input_csv_path> <output_filename>")
+        sys.exit(1)
 
+    csv_path = sys.argv[1]
+    output_name = sys.argv[2]
+
+    os.makedirs("output", exist_ok=True)
     print(f"Reading data from {csv_path}...")
     data = read_csv(csv_path)
 
@@ -73,6 +63,7 @@ def main():
     write_csv(sorted_data, output_path)
     print(f"✔ Output written to {output_path}")
 
-
 if __name__ == "__main__":
     main()
+
+## python src/generator/sorting/merge_sort.py data/test_1M.csv merge_sort_80000000.csv

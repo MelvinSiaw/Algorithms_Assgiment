@@ -1,13 +1,8 @@
 import csv
 import time
 import os
+import sys
 from typing import List, Tuple
-
-
-# ===== Configuration =====
-csv_path = "output/merge_sort_60000000.csv"  # Sorted CSV file
-output_name = "binary_search_60000000.txt"
-# ==========================
 
 
 def read_csv(filepath: str) -> List[Tuple[int, str]]:
@@ -43,6 +38,13 @@ def measure_search_time(data: List[Tuple[int, str]], target: int, repeats: int =
 
 
 def main():
+    if len(sys.argv) != 3:
+        print("Usage: python binary_search.py <sorted_csv_path> <output_txt_name>")
+        sys.exit(1)
+
+    csv_path = sys.argv[1]
+    output_txt = sys.argv[2]
+
     os.makedirs("output", exist_ok=True)
 
     print(f"Reading {csv_path}...")
@@ -51,24 +53,26 @@ def main():
     print(f"Loaded {n:,} records")
 
     # Targets
-    best_target = data[n // 2][0]         # Best: middle
-    average_target = data[n // 3][0]      # Average: not optimal, not terrible
-    worst_target = -1                     # Worst: guaranteed not found
+    best_target = data[n // 2][0]
+    average_target = data[n // 3][0]
+    worst_target = -1  # Not found
 
-    # Measure times
+    # Measure
     best_time = measure_search_time(data, best_target)
     average_time = measure_search_time(data, average_target)
     worst_time = measure_search_time(data, worst_target)
 
     # Output
-    output_path = f"output/{output_name}"
-    with open(output_path, "w", encoding="utf-8") as f:
+    out_path = os.path.join("output", output_txt)
+    with open(out_path, "w", encoding="utf-8") as f:
         f.write(f"Best case: {best_time:.6f} seconds\n")
         f.write(f"Average case: {average_time:.6f} seconds\n")
         f.write(f"Worst case: {worst_time:.6f} seconds\n")
 
-    print(f"✔ Binary search analysis written to {output_path}")
+    print(f"✔ Binary search analysis written to {out_path}")
 
 
 if __name__ == "__main__":
     main()
+
+## python src/generator/searching/binary_search.py output/merge_sort_60000000.csv binary_search_60000000.txt

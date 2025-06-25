@@ -1,17 +1,9 @@
 import csv
 import os
+import sys
 from typing import List, Tuple
 
-
-# ===== Configuration =====
-csv_path = "data/dataset_60000000.csv"  # Input CSV file path
-start_row = 0                  # Start row index (inclusive)
-end_row = 6                    # End row index (inclusive)
-# ==========================
-
-
 def read_csv_subset(filepath: str, start: int, end: int) -> List[Tuple[int, str]]:
-    """Read a subset of rows from the CSV file and return a list of (int, string) tuples."""
     data = []
     with open(filepath, 'r', encoding='utf-8') as f:
         reader = csv.reader(f)
@@ -24,15 +16,12 @@ def read_csv_subset(filepath: str, start: int, end: int) -> List[Tuple[int, str]
                 data.append((num, text))
     return data
 
-
 def quick_sort_trace(arr: List[Tuple[int, str]], low: int, high: int, trace: List[str]) -> None:
-    """Quick Sort with step tracing using the last element as pivot."""
     if low < high:
         pi = partition(arr, low, high, trace)
         trace.append(f"pi={pi} " + format_row(arr))
         quick_sort_trace(arr, low, pi - 1, trace)
         quick_sort_trace(arr, pi + 1, high, trace)
-
 
 def partition(arr: List[Tuple[int, str]], low: int, high: int, trace: List[str]) -> int:
     pivot = arr[high][0]
@@ -44,12 +33,18 @@ def partition(arr: List[Tuple[int, str]], low: int, high: int, trace: List[str])
     arr[i + 1], arr[high] = arr[high], arr[i + 1]
     return i + 1
 
-
 def format_row(row: List[Tuple[int, str]]) -> str:
     return "[" + ", ".join(f"{x}/{s}" for x, s in row) + "]"
 
-
 def main():
+    if len(sys.argv) != 4:
+        print("Usage: python quick_sort_step.py <csv_file> <start_row> <end_row>")
+        sys.exit(1)
+
+    csv_path = sys.argv[1]
+    start_row = int(sys.argv[2])
+    end_row = int(sys.argv[3])
+
     os.makedirs("output", exist_ok=True)
 
     data = read_csv_subset(csv_path, start_row, end_row)
@@ -65,6 +60,7 @@ def main():
 
     print(f"✔ Quick sort completed! Output saved to: {out_filename}")
 
-
 if __name__ == "__main__":
     main()
+
+## python src/generator/sorting/quick_sort_step.py data/dataset_80000000.csv 0 6
