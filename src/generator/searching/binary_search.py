@@ -5,8 +5,8 @@ from typing import List, Tuple
 
 
 # ===== Configuration =====
-csv_path = "output/merge_sort_60M.csv"  # Sorted CSV file
-output_name = "binary_search_60M.txt"
+csv_path = "output/merge_sort_60000000.csv"  # Sorted CSV file
+output_name = "binary_search_60000000.txt"
 # ==========================
 
 

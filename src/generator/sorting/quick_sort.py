@@ -5,8 +5,8 @@ from typing import List, Tuple
 
 
 # ===== Configuration =====
-csv_path = "data/test_60M.csv"          # Input file (unsorted)
-output_name = "quick_sort_60M.csv"      # Output file name
+csv_path = "data/dataset_60000000.csv"          # Input file (unsorted)
+output_name = "quick_sort_60000000.csv"      # Output file name
 # ==========================
 
 

@@ -4,7 +4,7 @@ from typing import List, Tuple
 
 
 # ===== Configuration =====
-csv_path = "output/merge_sort_60M.csv"  # Input CSV file path (must be sorted)
+csv_path = "output/merge_sort_60000000.csv"  # Input CSV file path (must be sorted)
 target_value = 2008864030                # Integer value to search
 # ==========================
 
