@@ -14,8 +14,8 @@ python part
 python src/generator/sorting/merge_sort_step.py data/dataset_10000000.csv 0 6
 python src/generator/sorting/quick_sort_step.py data/dataset_10000000.csv 0 6
 
-python src/generator/sorting/merge_sort.py data/10000000.csv merge_sort_10000000.csv
-python src/generator/sorting/quick_sort.py data/10000000.csv quick_sort_10000000.csv
+python src/generator/sorting/merge_sort.py data/dataset_10000000.csv merge_sort_10000000.csv
+python src/generator/sorting/quick_sort.py data/dataset_10000000.csv quick_sort_10000000.csv
 
 python src/generator/searching/binary_search_step.py output/merge_sort_10000000.csv 2008864030
 python src/generator/searching/binary_search.py output/merge_sort_10000000.csv binary_search_60000000.txt
