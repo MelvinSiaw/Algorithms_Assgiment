@@ -33,4 +33,3 @@ if __name__ == "__main__":
     generate(row_count, output_file)
     print(f"✔ Done: {row_count:,} rows written to '{output_file}'.")
     
-    # python src\generator/generate.py 200000000 data/dataset_200000000.csv 

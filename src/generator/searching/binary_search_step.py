@@ -61,5 +61,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-## python src/generator/searching/binary_search_step.py output/merge_sort_60000000.csv 2008864030

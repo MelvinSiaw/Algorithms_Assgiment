@@ -74,5 +74,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-## python src/generator/searching/binary_search.py output/merge_sort_60000000.csv binary_search_60000000.txt

@@ -1,10 +1,3 @@
-// ==========================================
-// File: dataset_generator.cpp
-// Desc: Generate dataset_<n>.csv with unique uint32 + random string
-// Usage: ./dataset_generator <row_count>
-// Output: ./data/dataset_<n>.csv
-// ==========================================
-
 #include <iostream>
 #include <fstream>
 #include <unordered_set>
@@ -63,5 +56,5 @@ int main(int argc, char* argv[]) {
     return 0;
 }
 
-// .\cpp\dataset_generator.exe 500000
+// .\cpp\dataset_generator.exe 75000000
 

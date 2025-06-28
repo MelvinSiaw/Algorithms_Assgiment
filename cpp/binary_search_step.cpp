@@ -1,8 +1,3 @@
-// ==========================================
-// File: binary_search_step.cpp
-// Desc: Trace each step of Binary Search on sorted dataset
-// Output: cpp_output/binary_search_step_<target>.txt
-// ==========================================
 #include <iostream>
 #include <fstream>
 #include <sstream>

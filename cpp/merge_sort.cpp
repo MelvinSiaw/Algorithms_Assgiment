@@ -1,8 +1,3 @@
-// ==========================================
-// File: merge_sort.cpp
-// Desc: Perform Merge Sort and record execution time
-// Output: cpp_output/merge_sort_<n>.csv
-// ==========================================
 #include <iostream>
 #include <fstream>
 #include <sstream>

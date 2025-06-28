@@ -65,5 +65,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-## python src/generator/sorting/merge_sort.py data/test_1M.csv merge_sort_80000000.csv

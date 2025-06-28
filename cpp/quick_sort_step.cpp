@@ -1,7 +1,3 @@
-// =======================================
-// File: quick_sort_step.cpp
-// Desc: Read CSV rows, perform Quick Sort, and write sorting steps
-// =======================================
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -91,5 +87,3 @@ int main(int argc, char* argv[]) {
     cout << " Output written to " << (outputDir / outFile).string() << endl;
     return 0;
 }
-
-// .\cpp\quick_sort_step.exe data\dataset_60000000.csv 0 6

@@ -1,7 +1,3 @@
-// =======================================
-// File: merge_sort_step.cpp
-// Desc: Read CSV rows, perform Merge Sort, and write sorting steps
-// =======================================
 #include <iostream>
 #include <fstream>
 #include <sstream>

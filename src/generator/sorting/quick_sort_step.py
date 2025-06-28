@@ -62,5 +62,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-## python src/generator/sorting/quick_sort_step.py data/dataset_80000000.csv 0 6
